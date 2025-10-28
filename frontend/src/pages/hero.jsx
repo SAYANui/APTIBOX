@@ -1,17 +1,14 @@
 import React from 'react'
 
+import { AuroraBackground } from "@/components/ui/shadcn-io/aurora-background/index.jsx"
+import Navbar from '@/components/navbar';
+
 const Hero = () => {
   return (
-    <section>
-      <div className="hero-container">
-        <div className="hero-content">
-          <h1>Welcome to Aptibox</h1>
-          <p>Your one-stop solution for all your needs</p>
-          <button className="cta-button">Get Started</button>
-        </div>
-      </div>
-    </section>
-  )
+    <AuroraBackground>
+      <Navbar />
+    </AuroraBackground>
+  );
 }
 
 export default Hero
