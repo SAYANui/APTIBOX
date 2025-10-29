@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="hidden md:flex justify-center items-center space-x-2">
         <ModeToggle />
         <SheetDemo text="Log In" variant="outline" buttonStyle="" title="Log In" description="Enter your credentials to access your account." submitText="Log In" closeText="Cancel" labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]} />
-        <SheetDemo text="Sign Up" variant="primary" buttonStyle="bg-[#328aff] hover:bg-[#1e9aff] text-white dark:bg-[#328aff] dark:hover:bg-[#1e9aff]" title="Sign Up" description="Enter your credentials to create your account." submitText="Log In" closeText="Cancel" labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]} />
+        <SheetDemo text="Sign Up" variant="primary" buttonStyle="bg-[#328aff] hover:bg-[#1e9aff] text-white dark:bg-[#328aff] dark:hover:bg-[#1e9aff]" title="Sign Up" description="Enter your credentials to create your account." submitText="Sign Up" closeText="Cancel" labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]} />
       </div>
 
       {/* Mobile Menu Button */}
@@ -46,12 +46,30 @@ const Navbar = () => {
           <DropdownMenuContent className="w-56" align="start">
             <DropdownMenuLabel>Authenticate</DropdownMenuLabel>
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                Log In
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Sign Up
-              </DropdownMenuItem>
+              <SheetDemo
+                asChild
+                title="Log In"
+                description="Enter your credentials to access your account."
+                submitText="Log In"
+                closeText="Cancel"
+                labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]}
+              >
+                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                  Log In
+                </DropdownMenuItem>
+              </SheetDemo>
+              <SheetDemo
+                asChild
+                title="Sign Up"
+                description="Enter your credentials to create your account."
+                submitText="Sign Up"
+                closeText="Cancel"
+                labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]}
+              >
+                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                  Sign Up
+                </DropdownMenuItem>
+              </SheetDemo>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
