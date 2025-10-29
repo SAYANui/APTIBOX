@@ -1,18 +1,15 @@
-const asyncHandler = require('express-async-handler'); // Simple middleware for handling exceptions inside async express routes
-const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
+import asyncHandler from 'express-async-handler';
+import jwt from 'jsonwebtoken';
+import User from '../models/userModel.js';
 
 // Helper function to generate a JWT
 const generateToken = (id) => {
+  // Uses named export 'jwt' from jsonwebtoken
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d', // Token expires in 30 days
   });
 };
-
-// @desc    Register a new user
-// @route   POST /api/users/signup
-// @access  Public
-const registerUser = asyncHandler(async (req, res) => {
+export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   // 1. Check if user already exists
@@ -44,7 +41,10 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-const authUser = asyncHandler(async (req, res) => {
+// @desc    Authenticate user & get token (Login)
+// @route   POST /api/users/login
+// @access  Public
+export const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   // 1. Find user by email
@@ -66,10 +66,12 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, authUser, getUserProfile };
-
-const getUserProfile = asyncHandler(async (req, res) => {
-  const user = req.user; 
+// @desc    Get user profile (uses the req.user set by auth middleware)
+// @route   GET /api/users/profile
+// @access  Private
+export const getUserProfile = asyncHandler(async (req, res) => {
+  // req.user is populated by the authentication middleware
+  const user = req.user;
 
   if (user) {
     // This is the data you would send to populate the user's dashboard/home page
@@ -84,6 +86,3 @@ const getUserProfile = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 });
-
-module.exports = { registerUser, authUser, getUserProfile }; 
-// (Make sure to export getUserProfile)

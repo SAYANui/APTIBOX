@@ -1,9 +1,13 @@
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler');
-const User = require('../models/userModel');
+import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
+import User from '../models/userModel.js'; // IMPORTANT: Note the .js extension for ES Modules
 
-const protect = asyncHandler(async (req, res, next) => {
+// @desc    Protect routes by verifying JWT
+// @access  Private
+export const protect = asyncHandler(async (req, res, next) => {
   let token;
+
+  // 1. Check if token exists in the Authorization header (e.g., "Bearer TOKEN_STRING")
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
@@ -14,8 +18,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      // Find user by ID from the decoded token payload and exclude the password
+      
       req.user = await User.findById(decoded.id).select('-password');
 
       if (!req.user) {
@@ -31,11 +34,9 @@ const protect = asyncHandler(async (req, res, next) => {
     }
   }
 
-  // 2. If no token is found
+  // 2. If no token is found after checking the header
   if (!token) {
     res.status(401);
     throw new Error('Not authorized, no token');
   }
 });
-
-module.exports = { protect };
