@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { AuroraBackground } from "@/components/ui/shadcn-io/aurora-background/index.jsx"
-import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar'
 
 const Hero = () => {
   return (
-    <AuroraBackground>
+    <AuroraBackground className="dark:text-white">
       <Navbar />
     </AuroraBackground>
-  );
+  )
 }
 
 export default Hero
