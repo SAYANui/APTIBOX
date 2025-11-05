@@ -9,12 +9,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SheetDemo } from './sheet-demo';
@@ -29,8 +23,33 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <div className="hidden md:flex justify-center items-center space-x-2">
         <ModeToggle />
-        <SheetDemo text="Log In" variant="outline" buttonStyle="" title="Log In" description="Enter your credentials to access your account." submitText="Log In" closeText="Cancel" labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]} />
-        <SheetDemo text="Sign Up" variant="primary" buttonStyle="bg-[#328aff] hover:bg-[#1e9aff] text-white dark:bg-[#328aff] dark:hover:bg-[#1e9aff]" title="Sign Up" description="Enter your credentials to create your account." submitText="Sign Up" closeText="Cancel" labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]} />
+        <SheetDemo
+          text="Log In"
+          variant="outline"
+          buttonStyle="shadow-md"
+          title="Log In"
+          description="Enter your credentials to access your account."
+          submitText="Log In"
+          closeText="Cancel"
+          labelsAndInputs={[
+            { label: "Email", type: "email", defaultValue: "example@email.com" },
+            { label: "Password", type: "password", defaultValue: "" }
+          ]}
+        />
+        <SheetDemo
+          text="Sign Up"
+          variant="primary"
+          buttonStyle="shadow-md bg-[#328aff] hover:bg-[#1e9aff] text-white dark:bg-[#328aff] dark:hover:bg-[#1e9aff]"
+          title="Sign Up"
+          description="Enter your credentials to create your account."
+          submitText="Sign Up"
+          closeText="Cancel"
+          labelsAndInputs={[
+            { label: "Email", type: "email", defaultValue: "example@email.com" },
+            { label: "Username", type: "text", defaultValue: "" },
+            { label: "Password", type: "password", defaultValue: "" }
+          ]}
+        />
       </div>
 
       {/* Mobile Menu Button */}
@@ -64,7 +83,11 @@ const Navbar = () => {
                 description="Enter your credentials to create your account."
                 submitText="Sign Up"
                 closeText="Cancel"
-                labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]}
+                labelsAndInputs={[
+                  { label: "Email", type: "email", defaultValue: "example@email.com" },
+                  { label: "Username", type: "text", defaultValue: "username_123" },
+                  { label: "Password", type: "password", defaultValue: "" }
+                ]}
               >
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                   Sign Up
