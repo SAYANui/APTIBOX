@@ -11,7 +11,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Slot } from "@radix-ui/react-slot";
 
 export function SheetDemo({ asChild, children, ...props }) {
   return (
