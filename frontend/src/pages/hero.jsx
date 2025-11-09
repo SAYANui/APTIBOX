@@ -137,7 +137,7 @@ const Hero = () => {
 
       <footer className='m-20 text-center text-gray-600 border-t border-gray-800 p-4'>
         <p className='text-md'>
-          &copy; {new Date().getFullYear()} TODO App. All rights reserved.
+          &copy; {new Date().getFullYear()} AptiBox. All rights reserved.
         </p>
       </footer>
     </div>
