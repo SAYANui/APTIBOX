@@ -38,8 +38,8 @@ const Navbar = () => {
         />
         <SheetDemo
           text="Sign Up"
-          variant="primary"
-          buttonStyle="shadow-md bg-[#328aff] hover:bg-[#1e9aff] text-white dark:bg-[#328aff] dark:hover:bg-[#1e9aff]"
+          variant="default"
+          buttonStyle="shadow-md dark:text-white"
           title="Sign Up"
           description="Enter your credentials to create your account."
           submitText="Sign Up"
@@ -68,10 +68,14 @@ const Navbar = () => {
               <SheetDemo
                 asChild
                 title="Log In"
+                buttonStyle="shadow-md"
                 description="Enter your credentials to access your account."
                 submitText="Log In"
                 closeText="Cancel"
-                labelsAndInputs={[{ label: "Email", type: "email", defaultValue: "example@email.com" }, { label: "Password", type: "password", defaultValue: "" }]}
+                labelsAndInputs={[
+                  { label: "Email", type: "email", defaultValue: "example@email.com" },
+                  { label: "Password", type: "password", defaultValue: "" }
+                ]}
               >
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                   Log In
@@ -80,6 +84,7 @@ const Navbar = () => {
               <SheetDemo
                 asChild
                 title="Sign Up"
+                buttonStyle="shadow-md"
                 description="Enter your credentials to create your account."
                 submitText="Sign Up"
                 closeText="Cancel"
@@ -89,7 +94,7 @@ const Navbar = () => {
                   { label: "Password", type: "password", defaultValue: "" }
                 ]}
               >
-                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                <DropdownMenuItem className="dark:text-white" onSelect={(e) => e.preventDefault()}>
                   Sign Up
                 </DropdownMenuItem>
               </SheetDemo>

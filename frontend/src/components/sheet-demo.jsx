@@ -34,7 +34,7 @@ export function SheetDemo({ asChild, children, ...props }) {
           ))}
         </div>
         <SheetFooter>
-          <Button type="submit" className="bg-[#328aff] hover:bg-[#1e9aff] text-white">{props.submitText}</Button>
+          <Button type="submit" className="text-white">{props.submitText}</Button>
           <SheetClose asChild>
             <Button variant="outline">{props.closeText}</Button>
           </SheetClose>

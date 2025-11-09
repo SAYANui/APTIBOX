@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
+
+import { ModeToggle } from '@/components/mode-toggle';
+
 import { FaArrowLeft } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from 'react-icons/md';
@@ -110,6 +114,11 @@ const Test = () => {
     }
   ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate('/dashboard');
+  };
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -131,10 +140,13 @@ const Test = () => {
   return (
     <section>
       <div className='p-3 flex items-center gap-3'>
-        <Button variant="ghost" size="icon" aria-label="Submit">
+        <Button variant="ghost" size="icon" aria-label="Submit" onClick={handleBack}>
           <FaArrowLeft />
         </Button>
         <h3 className='text-lg font-medium'>Test</h3>
+        <div className="ml-auto">
+          <ModeToggle />
+        </div>
       </div>
       <div className='flex flex-col justify-center items-center h-[80vh] p-6'>
         {questions.length > 0 && (
@@ -167,12 +179,12 @@ const Test = () => {
                   <MdKeyboardArrowLeft /> Previous
                 </Button>
                 {currentQuestionIndex < questions.length - 1 && (
-                  <Button size="sm" className="bg-[#328aff] text-white hover:bg-[#1e9aff] shadow-md" onClick={handleNextQuestion}>
+                  <Button size="sm" className="shadow-md" onClick={handleNextQuestion}>
                     Next <MdKeyboardArrowRight />
                   </Button>
                 )}
                 {currentQuestionIndex === questions.length - 1 && (
-                  <Button type="submit" size="sm" className="bg-[#328aff] text-white hover:bg-[#1e9aff] shadow-md" onClick={handleSubmit}>
+                  <Button type="submit" size="sm" className="shadow-md" onClick={handleSubmit}>
                     Submit
                   </Button>
                 )}

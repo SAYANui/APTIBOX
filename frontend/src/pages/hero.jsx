@@ -59,6 +59,22 @@ const feedbacks = [
 ];
 
 const Hero = () => {
+  const handleLearnMore = () => {
+    // Logic to navigate to the Features section
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  const handleGetStarted = () => {
+    // Logic to navigate to the Sign Up section or open a modal
+    const signUpSection = document.getElementById('sign-up');
+    if (signUpSection) {
+      signUpSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <div className="dark:text-white h-screen selection:bg-[#328aff] selection:text-white">
       <Navbar />
@@ -70,10 +86,10 @@ const Hero = () => {
           Discover your potential with AptiBox - your ultimate platform for mastering aptitude tests.
         </p>
         <div className="space-x-4">
-          <Button className="bg-[#328aff] text-white hover:bg-[#1e9aff] shadow-md">
+          <Button className="dark:text-white shadow-md" onClick={handleGetStarted}>
             Get Started
           </Button>
-          <Button variant="outline" className="shadow-md">
+          <Button variant="outline" className="shadow-md" onClick={handleLearnMore}>
             Learn More
           </Button>
         </div>
